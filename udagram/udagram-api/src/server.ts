@@ -27,9 +27,6 @@ import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
   const app = express();
   const port = process.env.PORT || 3000;
 
-  app.use(bodyParser.json());
-
-  // app.use(cors());
   // We set the CORS origin to * so that we don't need to
   // worry about the complexities of CORS.
   app.use(
@@ -47,6 +44,22 @@ import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
       exposedHeaders: [],
     })
   );
+
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "X-Requested-With,content-type"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    next();
+  });
+
+  app.use(bodyParser.json());
 
   app.get("/healthz", (req, res) => {
     res.send("server runs correctly...");
