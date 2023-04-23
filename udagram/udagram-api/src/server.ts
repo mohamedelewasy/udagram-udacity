@@ -29,35 +29,7 @@ import { V0_FEED_MODELS, V0_USER_MODELS } from "./controllers/v0/model.index";
 
   // We set the CORS origin to * so that we don't need to
   // worry about the complexities of CORS.
-  app.use(
-    cors({
-      allowedHeaders: [
-        "*",
-        "Content-Type",
-        "Authorization",
-        "Access-Control-Allow-Origin",
-        "Access-Control-Allow-Headers",
-        "Access-Control-Allow-Methods",
-      ],
-      methods: ["POST", "GET", "PUT", "DELETE", "HEAD"],
-      origin: ["*"],
-      exposedHeaders: [],
-    })
-  );
-
-  app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "X-Requested-With,content-type"
-    );
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    next();
-  });
+  app.use(cors());
 
   app.use(bodyParser.json());
 
