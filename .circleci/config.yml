@@ -21,15 +21,12 @@ jobs:
       - run:
           name: Install Front-End Dependencies
           command: npm run frontend:install
-      # TODO: Install dependencies in the the backend API
       - run:
           name: Install API Dependencies
           command: npm run api:install
-      # TODO: Build the frontend app
       - run:
           name: Front-End Build
           command: npm run frontend:build
-      # TODO: Build the backend API
       - run:
           name: API Build
           command: npm run api:build
@@ -44,3 +41,14 @@ workflows:
   udagram:
     jobs:
       - build
+      - hold:
+          filters:
+            branches:
+              only:
+                - master
+          type: approval
+          requires:
+            - build
+      - deploy:
+          requires:
+            - hold
