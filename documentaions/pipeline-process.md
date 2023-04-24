@@ -13,3 +13,5 @@ the pipeline will be triggered whenever master branch changed
 9. deploy frontend to s3 bucket
 10. deploy api to elastic beanstalk
 11. update eb environment
+
+![image](../screenshots/pipeline-diagram.jpg)

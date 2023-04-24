@@ -4,4 +4,4 @@
 2. s3 bucket :: hosts front-end and images posted by the user
 3. eb :: hosts the api
 
-![image](../screenshots/diagram.png)
+![image](../screenshots/infrastructure-diagram.jpg)
